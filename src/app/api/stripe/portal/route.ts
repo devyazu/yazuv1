@@ -4,7 +4,11 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {});
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error("STRIPE_SECRET_KEY is not configured");
+  return new Stripe(key, {});
+}
 
 export async function POST() {
   const session = await getServerSession(authOptions);
@@ -22,6 +26,7 @@ export async function POST() {
     );
   }
 
+  const stripe = getStripe();
   const portalSession = await stripe.billingPortal.sessions.create({
     customer: user.stripeCustomerId,
     return_url: `${process.env.NEXTAUTH_URL}/profile`,

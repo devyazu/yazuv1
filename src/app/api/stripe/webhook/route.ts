@@ -3,18 +3,22 @@ import { headers } from "next/headers";
 import Stripe from "stripe";
 import { prisma } from "@/lib/db";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {});
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error("STRIPE_SECRET_KEY is not configured");
+  return new Stripe(key, {});
+}
 
 export async function POST(req: Request) {
   const body = await req.text();
   const headersList = await headers();
   const sig = headersList.get("stripe-signature");
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!sig || !webhookSecret) {
     return NextResponse.json({ error: "Missing signature or secret" }, { status: 400 });
   }
 
+  const stripe = getStripe();
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);

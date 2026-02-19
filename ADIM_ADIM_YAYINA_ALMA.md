@@ -131,7 +131,26 @@ git remote add origin https://github.com/KULLANICI_ADINIZ/yazu.git
 git push -u origin main
 ```
 
-`KULLANICI_ADINIZ` yerine kendi GitHub kullanıcı adınızı yazın. (GitHub’da repo oluştururken “Add a README” seçmediyseniz bu komutlar çalışır; seçtiyseniz önce `git pull origin main --allow-unrelated-histories` yapıp sonra push edin.)
+`KULLANICI_ADINIZ` yerine kendi GitHub kullanıcı adınızı yazın.
+
+**“Authentication failed” alıyorsanız:** GitHub artık şifre ile push kabul etmiyor. İki yol var:
+
+**Yol A — Personal Access Token (en hızlı)**  
+1. GitHub’da sağ üst profil fotoğrafı → **Settings**.  
+2. Sol menü en altta **Developer settings** → **Personal access tokens** → **Tokens (classic)**.  
+3. **Generate new token (classic)**. Note: `yazu` yazın. Expiration: 90 days veya No expiration. **repo** kutusunu işaretleyin. **Generate token** deyin.  
+4. Çıkan token’ı **bir kere** gösterilir; kopyalayıp güvenli bir yere kaydedin.  
+5. Terminal’de tekrar `git push -u origin main` yazın. **Username** sorunca GitHub kullanıcı adınızı, **Password** sorunca **token’ı** (şifre değil) yapıştırın.  
+6. (İsteğe bağlı) Mac’te şifreyi saklamak için: `git config --global credential.helper osxkeychain` — bir sonraki push’ta token’ı Keychain’e kaydeder.
+
+**Yol B — SSH anahtarı**  
+1. Terminal’de: `ssh-keygen -t ed25519 -C "email@ornek.com"` → Enter’a basın (dosya yolu ve passphrase boş kalabilir).  
+2. `cat ~/.ssh/id_ed25519.pub` yazıp çıkan metni kopyalayın.  
+3. GitHub → **Settings** → **SSH and GPG keys** → **New SSH key** → başlık verin, anahtarı yapıştırın → **Add SSH key**.  
+4. Remote’u HTTPS’ten SSH’a çevirin: `git remote set-url origin git@github.com:KULLANICI_ADINIZ/yazu.git`  
+5. `git push -u origin main` — artık şifre sormaz.
+
+(GitHub’da repo oluştururken “Add a README” seçtiyseniz önce `git pull origin main --allow-unrelated-histories` yapıp sonra push edin.)
 
 **Ne yapıyorum?** Proje kodunu GitHub’a koyuyorum; Vercel buradan çekecek.
 
