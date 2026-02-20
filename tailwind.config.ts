@@ -24,9 +24,9 @@ const config: Config = {
           950: "#451304",
         },
         surface: {
-          DEFAULT: "#0f0f0f",
-          elevated: "#1a1a1a",
-          card: "#161616",
+          DEFAULT: "#fafafa",
+          elevated: "#ffffff",
+          card: "#ffffff",
         },
       },
       fontFamily: {
