@@ -24,29 +24,34 @@ export function EmailVerifyBanner() {
   }
 
   return (
-    <div className="bg-amber-50 border-b border-amber-200 px-6 py-3 flex flex-wrap items-center justify-between gap-2">
-      <p className="text-amber-800 text-sm">
+    <div className="bg-brand-50 border-b border-brand-200 px-6 py-3 flex flex-wrap items-center justify-between gap-2">
+      <p className="text-stone-800 text-sm">
         E-posta adresinizi henüz doğrulamadınız. Hesap güvenliği için lütfen doğrulama yapın.
       </p>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         {linkSent && !verifyUrl && (
-          <span className="text-sm text-amber-800">E-postanıza doğrulama linki gönderildi.</span>
+          <span className="text-sm text-stone-700">
+            E-postanıza doğrulama linki gönderildi. Gelen kutusunu ve spam klasörünü kontrol edin.
+          </span>
         )}
         {verifyUrl && (
-          <a
-            href={verifyUrl}
-            className="text-sm font-medium text-amber-800 underline hover:no-underline"
-          >
-            E-postayı doğrula (test linki)
-          </a>
+          <span className="text-sm text-stone-600">
+            E-posta ulaşmadıysa{" "}
+            <a
+              href={verifyUrl}
+              className="font-medium text-brand-600 underline hover:no-underline"
+            >
+              buradan doğrulayın
+            </a>
+          </span>
         )}
         <button
           type="button"
           onClick={handleSendLink}
           disabled={loading}
-          className="rounded-lg bg-amber-200 text-amber-900 px-3 py-1.5 text-sm font-medium hover:bg-amber-300 disabled:opacity-50"
+          className="rounded-xl bg-brand-100 hover:bg-brand-200 text-brand-800 px-4 py-2 text-sm font-medium disabled:opacity-50 transition-colors"
         >
-          {loading ? "Gönderiliyor..." : linkSent ? "Link tekrar gönder" : "Doğrulama linki al"}
+          {loading ? "Gönderiliyor..." : linkSent ? "Link tekrar gönder" : "Doğrulama linki gönder"}
         </button>
       </div>
     </div>

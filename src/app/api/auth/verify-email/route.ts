@@ -21,5 +21,5 @@ export async function GET(req: Request) {
   });
   await prisma.verificationToken.delete({ where: { token } });
 
-  return NextResponse.redirect(new URL("/dashboard?verified=1", process.env.NEXTAUTH_URL || req.url));
+  return NextResponse.redirect(new URL("/login?verified=1", process.env.NEXTAUTH_URL || req.url));
 }

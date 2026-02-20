@@ -13,6 +13,7 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") ?? "/dashboard";
+  const verified = searchParams.get("verified") === "1";
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -44,6 +45,11 @@ function LoginForm() {
           </span>
         </Link>
         <div className="bg-white/90 backdrop-blur-xl border border-stone-200/50 rounded-2xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+          {verified && (
+            <div className="mb-4 rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800">
+              E-postanız doğrulandı. Giriş yaparak devam edin.
+            </div>
+          )}
           <h1 className="text-xl font-bold text-stone-800 mb-6 tracking-tight">Giriş yap</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
