@@ -11,8 +11,8 @@ export default async function AdminPlansPage() {
     <div className="p-8">
       <h1 className="text-2xl font-semibold text-white mb-6">Planlar</h1>
       <p className="text-zinc-400 mb-6">
-        Plan adı, fiyat (Stripe’da ayarlanır), izin verilen tool tier’ları, takım ve marka limitleri
-        aşağıda listelenir. Fiyatları Stripe Dashboard’dan güncelleyin; burada sadece limitler ve
+        Plan adı, fiyat (Stripe'da ayarlanır), izin verilen tool tier'ları, takım ve marka limitleri
+        aşağıda listelenir. Fiyatları Stripe Dashboard'dan güncelleyin; burada sadece limitler ve
         tier listesi yönetilir.
       </p>
       <div className="rounded-xl border border-[var(--border)] overflow-hidden">
@@ -20,7 +20,7 @@ export default async function AdminPlansPage() {
           <thead className="bg-surface-elevated text-zinc-400 text-sm">
             <tr>
               <th className="px-4 py-3 font-medium">Plan</th>
-              <th className="px-4 py-3 font-medium">Tool tier’ları</th>
+              <th className="px-4 py-3 font-medium">Tool tier'ları</th>
               <th className="px-4 py-3 font-medium">Takım limiti</th>
               <th className="px-4 py-3 font-medium">Marka limiti</th>
               <th className="px-4 py-3 font-medium">Kullanıcı sayısı</th>

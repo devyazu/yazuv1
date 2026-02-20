@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import Link from "next/link";
+import { UserRoleSelect } from "./UserRoleSelect";
 
 export default async function AdminUsersPage() {
   const users = await prisma.user.findMany({
@@ -28,7 +28,9 @@ export default async function AdminUsersPage() {
                 <td className="px-4 py-3">{u.email}</td>
                 <td className="px-4 py-3">{u.name ?? "—"}</td>
                 <td className="px-4 py-3">{u.plan?.name ?? "—"}</td>
-                <td className="px-4 py-3">{u.role}</td>
+                <td className="px-4 py-3">
+                  <UserRoleSelect userId={u.id} currentRole={u.role} />
+                </td>
                 <td className="px-4 py-3 text-zinc-400 text-sm">
                   {new Date(u.createdAt).toLocaleDateString("tr-TR")}
                 </td>

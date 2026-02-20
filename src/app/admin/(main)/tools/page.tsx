@@ -39,8 +39,8 @@ export default async function AdminToolsPage({
         </table>
       </div>
       <p className="mt-4 text-sm text-zinc-500">
-        Araç prompt’larını ve tier’ını veritabanında (Tool.systemPrompt, Tool.tier) veya Prisma
-        Studio ile düzenleyebilirsiniz. İleride admin’e prompt editörü eklenebilir.
+        Araç prompt'larını ve tier'ını veritabanında (Tool.systemPrompt, Tool.tier) veya Prisma
+        Studio ile düzenleyebilirsiniz. İleride admin'e prompt editörü eklenebilir.
       </p>
     </div>
   );
