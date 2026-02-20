@@ -73,8 +73,8 @@ export async function POST(req: Request) {
     mode: "subscription",
     payment_method_types: ["card"],
     line_items: [{ price: priceId, quantity: 1 }],
-    success_url: `${process.env.NEXTAUTH_URL}/profile?success=1`,
-    cancel_url: `${process.env.NEXTAUTH_URL}/profile?cancel=1`,
+    success_url: `${process.env.NEXTAUTH_URL}/dashboard?success=1`,
+    cancel_url: `${process.env.NEXTAUTH_URL}/dashboard/checkout?plan=${planSlug}&cancel=1`,
     subscription_data: {
       metadata: { userId: user.id, planId: plan.id },
     },

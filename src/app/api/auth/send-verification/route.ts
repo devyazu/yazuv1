@@ -3,11 +3,12 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { randomBytes } from "crypto";
+import { sendVerificationEmail } from "@/lib/email";
 
-/** Yeni doğrulama linki oluşturur; test için URL döner (ileride e-posta gönderilecek). */
+/** Yeni doğrulama linki oluşturur ve e-posta gönderir (SMTP yoksa URL döner). */
 export async function POST() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.id) {
+  if (!session?.user?.id || !session?.user?.email) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -28,5 +29,7 @@ export async function POST() {
   const base = process.env.NEXTAUTH_URL || "";
   const verifyUrl = `${base}/api/auth/verify-email?token=${token}`;
 
-  return NextResponse.json({ verifyUrl });
+  const sent = await sendVerificationEmail(session.user.email, verifyUrl);
+
+  return NextResponse.json({ verifyUrl: sent ? undefined : verifyUrl, sent });
 }

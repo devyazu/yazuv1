@@ -16,6 +16,7 @@ export default async function AdminMainLayout({
 
   const nav = [
     { href: "/admin", label: "Dashboard" },
+    { href: "/admin/content", label: "İçerik yönetimi" },
     { href: "/admin/users", label: "Kullanıcılar" },
     { href: "/admin/plans", label: "Planlar" },
     { href: "/admin/categories", label: "Kategoriler" },

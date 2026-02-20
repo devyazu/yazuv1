@@ -33,7 +33,14 @@ export default async function CheckoutPage({
         {plan.allowedToolTiers.join(", ")} araç · {plan.teamMembersLimit} takım üyesi ·{" "}
         {plan.brandsLimit} marka
       </p>
-      <CheckoutClient planSlug={plan.slug} planName={plan.name} />
+      <CheckoutClient
+        planSlug={plan.slug}
+        planName={plan.name}
+        hasStripeMonthly={!!plan.stripePriceIdMonthly}
+        hasStripeYearly={!!plan.stripePriceIdYearly}
+        monthlyCents={plan.monthlyAmountCents ?? undefined}
+        yearlyCents={plan.yearlyAmountCents ?? undefined}
+      />
     </div>
   );
 }

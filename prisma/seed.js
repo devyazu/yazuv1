@@ -122,6 +122,38 @@ async function main() {
   });
   console.log("Varsayılan admin kullanıcısı: admin@yazu.digital");
 
+  const homeCount = await prisma.homeSection.count();
+  if (homeCount === 0) {
+    await prisma.homeSection.createMany({
+      data: [
+        {
+          page: "home",
+          type: "hero",
+          order: 0,
+          data: {
+            title: "Smart mind for your business",
+            subtitle:
+              "AI ile markanızın sesine uygun metinler üretin. Copywriting ve içerik araçlarıyla daha hızlı, tutarlı ve etkili çıktılar alın.",
+            ctaPrimaryText: "Ücretsiz Başla",
+            ctaPrimaryUrl: "/register",
+            ctaSecondaryText: "Planları İncele",
+            ctaSecondaryUrl: "#plans",
+          },
+        },
+        {
+          page: "home",
+          type: "pricing_heading",
+          order: 1,
+          data: {
+            title: "Üyelik paketleri",
+            subtitle: "İhtiyacınıza uygun planı seçin, hemen başlayın.",
+          },
+        },
+      ],
+    });
+    console.log("Ana sayfa bölümleri (CMS) eklendi.");
+  }
+
   console.log("Seed tamamlandı.");
 }
 

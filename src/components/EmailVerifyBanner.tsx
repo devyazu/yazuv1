@@ -14,9 +14,9 @@ export function EmailVerifyBanner() {
     try {
       const res = await fetch("/api/auth/send-verification", { method: "POST" });
       const data = await res.json();
-      if (res.ok && data.verifyUrl) {
+      if (res.ok) {
         setLinkSent(true);
-        setVerifyUrl(data.verifyUrl);
+        if (data.verifyUrl) setVerifyUrl(data.verifyUrl);
       }
     } finally {
       setLoading(false);
@@ -29,6 +29,9 @@ export function EmailVerifyBanner() {
         E-posta adresinizi henüz doğrulamadınız. Hesap güvenliği için lütfen doğrulama yapın.
       </p>
       <div className="flex items-center gap-2">
+        {linkSent && !verifyUrl && (
+          <span className="text-sm text-amber-800">E-postanıza doğrulama linki gönderildi.</span>
+        )}
         {verifyUrl && (
           <a
             href={verifyUrl}

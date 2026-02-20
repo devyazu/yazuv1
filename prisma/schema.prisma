@@ -62,6 +62,17 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model HomeSection {
+  id        String   @id @default(cuid())
+  page      String   @default("home")
+  type      String   // hero, pricing_heading, custom_block, plans
+  order     Int      @default(0)
+  data      Json     // type'a göre: hero { title, subtitle, ctaPrimaryText, ... }, custom_block { title, body, imageUrl?, ... }
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@index([page, order])
+}
+
 enum ToolTier {
   free
   basic
