@@ -3,6 +3,7 @@ import { hash } from "bcryptjs";
 import { z } from "zod";
 import { randomBytes } from "crypto";
 import { prisma } from "@/lib/db";
+import { sendVerificationEmail } from "@/lib/email";
 
 const bodySchema = z.object({
   email: z.string().email(),
@@ -42,6 +43,12 @@ export async function POST(req: Request) {
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       },
     });
+    const base = process.env.NEXTAUTH_URL || "";
+    const verifyUrl = `${base}/api/auth/verify-email?token=${verificationToken}`;
+    const emailSent = await sendVerificationEmail(user.email, verifyUrl);
+    if (!emailSent) {
+      console.warn("SMTP not configured or failed; verification email not sent for", user.email);
+    }
     const nextPath = validPlan
       ? `/dashboard/checkout?plan=${validPlan.slug}`
       : "/dashboard/choose-plan";

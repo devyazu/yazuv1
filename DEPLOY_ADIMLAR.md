@@ -73,6 +73,50 @@ node prisma/seed.js
 
 ---
 
+## 6. Domain: yazu.digital’e geçiş
+
+Siteyi **yazu.digital** adresinde yayına almak için:
+
+### 6.1 Domain’i Vercel’e ekle
+
+1. **Vercel Dashboard** → projeniz → **Settings** → **Domains**.
+2. **Add** veya **Add domain** → `yazu.digital` yazın (www’siz).
+3. İsterseniz `www.yazu.digital` de ekleyin; Vercel genelde otomatik yönlendirme önerir (www → ana domain).
+
+### 6.2 DNS ayarlarını yap
+
+Domain’i **nereden aldıysanız** (GoDaddy, Namecheap, Cloudflare, Getir, vs.) o panelde **DNS** bölümüne girin. Vercel, Domains sayfasında size ne eklemeniz gerektiğini gösterir:
+
+- **A kaydı:**  
+  - Name: `@` (veya `yazu.digital`)  
+  - Value: `76.76.21.21` (Vercel’in IP’si; ekranda yazanı kullanın.)
+- **CNAME (www için):**  
+  - Name: `www`  
+  - Value: `cname.vercel-dns.com`
+
+(Vercel bazen **CNAME** ile `@` için de `cname.vercel-dns.com` önerir; ekrandaki talimatı takip edin.)
+
+Kayıtları kaydettikten sonra **yayılması 5 dakika – 48 saat** sürebilir; genelde birkaç saat içinde çalışır.
+
+### 6.3 NEXTAUTH_URL’i güncelle
+
+1. **Vercel** → **Settings** → **Environment Variables**.
+2. `NEXTAUTH_URL` değişkenini bulun (yoksa ekleyin).
+3. Değeri **`https://yazu.digital`** yapın. **Save**.
+4. **Deployments** → son deploy → **⋯** → **Redeploy**. (Yeni domain ve yeni URL’in kullanılması için gerekli.)
+
+### 6.4 Stripe kullanıyorsanız
+
+- **Stripe Dashboard** → **Developers** → **Webhooks** → ilgili webhook’un **Endpoint URL**’ini `https://yazu.digital/api/stripe/webhook` yapın.
+- Stripe’da **Settings** → **Customer portal** veya checkout callback adresleri varsa `https://yazu.digital` ile güncelleyin.
+
+### 6.5 Kontrol
+
+- Tarayıcıda **https://yazu.digital** açın; site gelmeli.
+- Giriş / çıkış ve doğrulama maillerindeki linkler `https://yazu.digital` ile açılmalı.
+
+---
+
 ## Özet (her deploy’da)
 
 | Adım | Ne zaman? |
@@ -82,7 +126,4 @@ node prisma/seed.js
 | 3. Env değişkenleri | Sadece ilk kez veya değişince |
 | 4. `db:push` / `seed` | Şema veya seed değişince |
 | 5. Canlıda test | Her deploy sonrası |
-
----
-
-**Domain:** yazu.digital kullanacaksan Vercel’de domain ekleyip `NEXTAUTH_URL` ve Stripe callback URL’lerini buna göre güncelle.
+| 6. Domain (yazu.digital) | İlk kez domain bağlarken; sonra sadece güncelleme gerekirse |

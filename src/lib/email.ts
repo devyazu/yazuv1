@@ -47,7 +47,9 @@ export async function sendVerificationEmail(to: string, verifyUrl: string): Prom
     });
     return true;
   } catch (e) {
-    console.error("Send verification email error:", e);
+    const err = e instanceof Error ? e : new Error(String(e));
+    console.error("[email] Send verification failed:", err.message);
+    if ("code" in err) console.error("[email] code:", (e as { code?: string }).code);
     return false;
   }
 }
