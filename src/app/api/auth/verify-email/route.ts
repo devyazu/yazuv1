@@ -22,5 +22,8 @@ export async function GET(req: Request) {
   });
   await prisma.verificationToken.delete({ where: { token } });
 
-  return NextResponse.redirect(`${base}/login?verified=1`);
+  // Oturumu kapat ki kullanıcı tekrar giriş yapsın; yeni JWT'de emailVerified güncel olur, panelde banner kaybolur
+  const loginUrl = `${base}/login?verified=1`;
+  const signoutUrl = `${base}/api/auth/signout?callbackUrl=${encodeURIComponent(loginUrl)}`;
+  return NextResponse.redirect(signoutUrl);
 }
