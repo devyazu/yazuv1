@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import Link from "next/link";
+import Image from "next/image";
 import { EmailVerifyBanner } from "@/components/EmailVerifyBanner";
 
 export default async function DashboardLayout({
@@ -32,12 +33,7 @@ export default async function DashboardLayout({
         <aside className="w-72 flex flex-col bg-white/80 backdrop-blur-xl border-r border-white/40 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
           <div className="p-4 border-b border-stone-200/50">
             <Link href="/dashboard" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-200">
-                Y
-              </div>
-              <span className="text-lg font-bold text-stone-800 tracking-tight">
-                yazu<span className="text-brand-600">AI</span>
-              </span>
+              <Image src="/yazu.svg" alt="yazu" width={120} height={34} className="h-8 w-auto" />
             </Link>
           </div>
           <nav className="flex-1 overflow-y-auto p-3">

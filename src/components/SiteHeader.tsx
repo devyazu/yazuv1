@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
@@ -8,12 +9,7 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-xl border-b border-white/40 shadow-soft flex items-center justify-between px-6">
       <Link href="/" className="flex items-center gap-2.5">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-200">
-          Y
-        </div>
-        <span className="text-lg font-bold text-stone-800 tracking-tight">
-          yazu<span className="text-brand-600">AI</span>
-        </span>
+        <Image src="/yazu.svg" alt="yazu" width={120} height={34} className="h-8 w-auto" priority />
       </Link>
       <nav className="flex items-center gap-4">
         {session ? (

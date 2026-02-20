@@ -12,6 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "yazu | AI destekli pazarlama ve içerik platformu",
   description: "Büyüme ve marka yöneticileri için 100+ AI araç. Copywriting, satış performansı, çoklu marka yönetimi tek yerde.",
+  icons: { icon: "/yazu-fav.svg" },
 };
 
 export default function RootLayout({

@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
 function RegisterForm() {
@@ -42,12 +43,7 @@ function RegisterForm() {
     <div className="min-h-screen bg-[#FAFAF9] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <Link href="/" className="inline-flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-200">
-            Y
-          </div>
-          <span className="text-2xl font-bold text-stone-800 tracking-tight">
-            yazu<span className="text-brand-600">AI</span>
-          </span>
+          <Image src="/yazu.svg" alt="yazu" width={140} height={39} className="h-9 w-auto" priority />
         </Link>
         <div className="bg-white/90 backdrop-blur-xl border border-stone-200/50 rounded-2xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
           <h1 className="text-xl font-bold text-stone-800 mb-6 tracking-tight">Hesap oluştur</h1>
