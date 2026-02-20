@@ -8,34 +8,65 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
+        mono: ["ui-monospace", "monospace"],
+      },
       colors: {
-        primary: {
-          DEFAULT: "#ff6100",
-          50: "#fff5ef",
-          100: "#ffe8db",
-          200: "#ffcdb8",
-          300: "#ffa885",
-          400: "#ff7d4d",
-          500: "#ff6100",
-          600: "#f04a00",
-          700: "#c73a00",
-          800: "#9e3009",
-          900: "#7f2b0b",
+        brand: {
+          50: "#fffbf5",
+          100: "#fff1e0",
+          200: "#ffdbb3",
+          300: "#ffbf80",
+          400: "#ff9d4d",
+          500: "#ff7b1a",
+          600: "#e66000",
+          700: "#cc4d00",
+          800: "#a63a00",
+          900: "#8c3100",
           950: "#451304",
         },
+        canvas: {
+          bg: "#FAFAF9",
+          panel: "#FFFFFF",
+        },
         surface: {
-          DEFAULT: "#fafafa",
-          elevated: "#ffffff",
-          card: "#ffffff",
+          DEFAULT: "#FAFAF9",
+          elevated: "#FFFFFF",
+          card: "#FFFFFF",
+        },
+        primary: {
+          DEFAULT: "#ff7b1a",
+          50: "#fffbf5",
+          100: "#fff1e0",
+          200: "#ffdbb3",
+          300: "#ffbf80",
+          400: "#ff9d4d",
+          500: "#ff7b1a",
+          600: "#e66000",
+          700: "#cc4d00",
+          800: "#a63a00",
+          900: "#8c3100",
         },
       },
-      fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["ui-monospace", "monospace"],
+      boxShadow: {
+        soft: "0 4px 30px rgba(0,0,0,0.02)",
+        "soft-lg": "0 8px 30px rgba(0,0,0,0.04)",
+        brand: "0 8px 30px rgb(230,96,0,0.15)",
+        "brand-lg": "0 10px 40px rgb(230,96,0,0.2)",
+      },
+      animation: {
+        "orb-pulse": "orb-pulse 8s ease-in-out infinite",
+      },
+      keyframes: {
+        "orb-pulse": {
+          "0%, 100%": { opacity: "0.6" },
+          "50%": { opacity: "1" },
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;

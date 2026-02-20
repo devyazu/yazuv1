@@ -61,7 +61,7 @@ export function ToolRunner({
             <select
               value={brandId}
               onChange={(e) => setBrandId(e.target.value)}
-              className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full rounded-xl border border-stone-200 px-4 py-3 text-stone-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
             >
               <option value="">Marka seçmeyin</option>
               {brands.map((b) => (
@@ -82,13 +82,13 @@ export function ToolRunner({
             required
             rows={4}
             placeholder={inputPlaceholder}
-            className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-foreground placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+            className="w-full rounded-xl border border-stone-200 px-4 py-3 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-200 resize-none"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50 transition"
+          className="rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 shadow-lg hover:shadow-xl hover:scale-[1.02] disabled:opacity-50 transition-all"
         >
           {loading ? "Üretiliyor..." : `${toolName} üret`}
         </button>

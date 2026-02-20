@@ -3,11 +3,15 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
-  title: "Yazu | AI-Powered Copywriting Platform",
-  description: "Metin tabanlı AI araçları ile içerik üretin.",
+  title: "yazu | AI destekli pazarlama ve içerik platformu",
+  description: "Büyüme ve marka yöneticileri için 100+ AI araç. Copywriting, satış performansı, çoklu marka yönetimi tek yerde.",
 };
 
 export default function RootLayout({

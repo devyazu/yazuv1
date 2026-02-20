@@ -26,66 +26,73 @@ export default async function DashboardLayout({
   });
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col">
+    <div className="min-h-screen bg-[#FAFAF9] flex flex-col">
       {!emailVerified && <EmailVerifyBanner />}
       <div className="flex flex-1 min-h-0">
-      <aside className="w-64 border-r border-[var(--border)] flex flex-col bg-surface-elevated">
-        <div className="p-4 border-b border-[var(--border)]">
-          <Link href="/dashboard" className="text-lg font-semibold text-foreground">
-            Yazu
-          </Link>
-        </div>
-        <nav className="flex-1 overflow-y-auto p-3">
-          {categories.map((cat) => (
-            <div key={cat.id} className="mb-4">
-              <p className="text-xs font-medium text-muted uppercase tracking-wider px-2 mb-2">
-                {cat.name}
-              </p>
-              <ul className="space-y-0.5">
-                {cat.tools.map((tool) => (
-                  <li key={tool.id}>
-                    <Link
-                      href={`/dashboard/tools/${tool.id}`}
-                      className="block rounded-lg px-3 py-2 text-sm text-muted hover:bg-black/5 hover:text-foreground transition"
-                    >
-                      {tool.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </nav>
-        <div className="p-3 border-t border-[var(--border)] space-y-1">
-          {isAdmin && (
-            <Link
-              href="/admin"
-              className="block rounded-lg px-3 py-2 text-sm text-primary hover:opacity-80 transition"
-            >
-              Admin panel
+        <aside className="w-72 flex flex-col bg-white/80 backdrop-blur-xl border-r border-white/40 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
+          <div className="p-4 border-b border-stone-200/50">
+            <Link href="/dashboard" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-200">
+                Y
+              </div>
+              <span className="text-lg font-bold text-stone-800 tracking-tight">
+                yazu<span className="text-brand-600">AI</span>
+              </span>
             </Link>
-          )}
-          <Link
-            href="/dashboard/brands"
-            className="block rounded-lg px-3 py-2 text-sm text-muted hover:text-foreground transition"
-          >
-            Markalarım
-          </Link>
-          <Link
-            href="/profile"
-            className="block rounded-lg px-3 py-2 text-sm text-muted hover:text-foreground transition"
-          >
-            Profil & Fatura
-          </Link>
-          <Link
-            href="/"
-            className="block rounded-lg px-3 py-2 text-sm text-muted hover:text-foreground transition"
-          >
-            Ana sayfa
-          </Link>
-        </div>
-      </aside>
-      <main className="flex-1 overflow-auto">{children}</main>
+          </div>
+          <nav className="flex-1 overflow-y-auto p-3">
+            {categories.map((cat) => (
+              <div key={cat.id} className="mb-4">
+                <p className="text-xs font-bold text-stone-400 uppercase tracking-wider px-2 mb-2">
+                  {cat.name}
+                </p>
+                <ul className="space-y-0.5">
+                  {cat.tools.map((tool) => (
+                    <li key={tool.id}>
+                      <Link
+                        href={`/dashboard/tools/${tool.id}`}
+                        className="block rounded-xl px-3 py-2.5 text-sm text-stone-600 hover:bg-white/50 hover:shadow-sm hover:text-brand-600 transition-all"
+                      >
+                        {tool.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+          <div className="p-3 border-t border-stone-200/50 space-y-1">
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="block rounded-xl px-3 py-2.5 text-sm font-medium text-brand-600 hover:bg-brand-50 transition-colors"
+              >
+                Admin panel
+              </Link>
+            )}
+            <Link
+              href="/dashboard/brands"
+              className="block rounded-xl px-3 py-2.5 text-sm text-stone-600 hover:bg-white/50 hover:text-stone-800 transition-colors"
+            >
+              Markalarım
+            </Link>
+            <Link
+              href="/profile"
+              className="block rounded-xl px-3 py-2.5 text-sm text-stone-600 hover:bg-white/50 hover:text-stone-800 transition-colors"
+            >
+              Profil & Fatura
+            </Link>
+            <Link
+              href="/"
+              className="block rounded-xl px-3 py-2.5 text-sm text-stone-600 hover:bg-white/50 hover:text-stone-800 transition-colors"
+            >
+              Ana sayfa
+            </Link>
+          </div>
+        </aside>
+        <main className="flex-1 min-h-0 overflow-y-auto p-6 lg:p-10">
+          {children}
+        </main>
       </div>
     </div>
   );

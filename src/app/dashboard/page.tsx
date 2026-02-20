@@ -22,24 +22,24 @@ export default async function DashboardPage() {
   });
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-semibold text-foreground mb-2">Dashboard</h1>
-      <p className="text-muted mb-8">
+    <div>
+      <h1 className="text-2xl font-bold text-stone-800 tracking-tight mb-2">Dashboard</h1>
+      <p className="text-stone-600 mb-8">
         Soldan bir kategori ve araç seçin veya aşağıdaki kartlardan birine tıklayın.
       </p>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {categories.map((cat) =>
           cat.tools.map((tool) => (
             <Link
               key={tool.id}
               href={`/dashboard/tools/${tool.id}`}
-              className="block rounded-xl border border-[var(--border)] bg-surface-card p-6 hover:border-primary/50 transition shadow-sm"
+              className="block rounded-2xl border border-stone-200 bg-white p-6 shadow-soft hover:border-brand-200 hover:shadow-brand hover:-translate-y-0.5 transition-all duration-200"
             >
-              <span className="text-xs font-medium text-primary uppercase tracking-wider">
+              <span className="text-xs font-bold text-brand-600 uppercase tracking-wider">
                 {cat.name}
               </span>
-              <h2 className="mt-2 text-lg font-medium text-foreground">{tool.name}</h2>
-              <p className="mt-1 text-sm text-muted line-clamp-2">
+              <h2 className="mt-2 text-lg font-semibold text-stone-800">{tool.name}</h2>
+              <p className="mt-1 text-sm text-stone-600 line-clamp-2">
                 {tool.description}
               </p>
             </Link>

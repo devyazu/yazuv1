@@ -1,5 +1,9 @@
 # Yazu — Deploy Adımları (Vercel + GitHub + Supabase)
 
+**Kural:** Her kod güncellemesinden sonra, o güncellemenin canlıya yansıması için aşağıdaki adımlar **sırayla** yazılmalı ve uygulanmalıdır. Asistan her güncelleme yanıtının sonunda bu deploy adımlarını tekrarlar.
+
+---
+
 Her deploy’da aşağıdaki adımları sırayla uygula.
 
 ---

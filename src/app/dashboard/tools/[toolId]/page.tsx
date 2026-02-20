@@ -32,13 +32,13 @@ export default async function ToolPage({
     : [];
 
   return (
-    <div className="p-8 max-w-3xl">
+    <div className="max-w-3xl">
       <div className="mb-6">
-        <span className="text-xs font-medium text-primary uppercase tracking-wider">
+        <span className="text-xs font-bold text-brand-600 uppercase tracking-wider">
           {tool.category.name}
         </span>
-        <h1 className="text-2xl font-semibold text-foreground mt-1">{tool.name}</h1>
-        <p className="mt-2 text-muted">{tool.description}</p>
+        <h1 className="text-2xl font-bold text-stone-800 tracking-tight mt-1">{tool.name}</h1>
+        <p className="mt-2 text-stone-600">{tool.description}</p>
       </div>
       {hasAccess ? (
         <ToolRunner

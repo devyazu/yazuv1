@@ -39,28 +39,33 @@ function RegisterForm() {
   }
 
   return (
-    <div className="min-h-screen bg-surface flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#FAFAF9] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
-        <Link href="/" className="inline-block text-2xl font-semibold text-foreground mb-8">
-          Yazu
+        <Link href="/" className="inline-flex items-center gap-2 mb-8">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-200">
+            Y
+          </div>
+          <span className="text-2xl font-bold text-stone-800 tracking-tight">
+            yazu<span className="text-brand-600">AI</span>
+          </span>
         </Link>
-        <div className="bg-surface-elevated border border-[var(--border)] rounded-2xl p-8 shadow-sm">
-          <h1 className="text-xl font-semibold text-foreground mb-6">Hesap oluştur</h1>
+        <div className="bg-white/90 backdrop-blur-xl border border-stone-200/50 rounded-2xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+          <h1 className="text-xl font-bold text-stone-800 mb-6 tracking-tight">Hesap oluştur</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-muted mb-1">
+              <label className="block text-sm font-medium text-stone-600 mb-1">
                 Ad (isteğe bağlı)
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-foreground placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-xl border border-stone-200 px-4 py-3 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
                 placeholder="Adınız"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-muted mb-1">
+              <label className="block text-sm font-medium text-stone-600 mb-1">
                 E-posta
               </label>
               <input
@@ -68,12 +73,12 @@ function RegisterForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-foreground placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-xl border border-stone-200 px-4 py-3 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
                 placeholder="ornek@email.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-muted mb-1">
+              <label className="block text-sm font-medium text-stone-600 mb-1">
                 Şifre (en az 8 karakter)
               </label>
               <input
@@ -82,7 +87,7 @@ function RegisterForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={8}
-                className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-foreground placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-xl border border-stone-200 px-4 py-3 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
               />
             </div>
             {error && (
@@ -91,14 +96,14 @@ function RegisterForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-lg bg-primary py-3 font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50 transition"
+              className="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 shadow-lg hover:shadow-xl hover:scale-[1.02] disabled:opacity-50 transition-all"
             >
               {loading ? "Oluşturuluyor..." : "Kayıt ol"}
             </button>
           </form>
-          <p className="mt-6 text-center text-sm text-muted">
+          <p className="mt-6 text-center text-sm text-stone-600">
             Zaten hesabınız var mı?{" "}
-            <Link href="/login" className="text-primary hover:underline">
+            <Link href="/login" className="text-brand-600 hover:text-brand-700 font-medium">
               Giriş yapın
             </Link>
           </p>
