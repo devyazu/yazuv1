@@ -44,8 +44,10 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+    console.error("Register error:", e);
+    const message = e instanceof Error ? e.message : "Kayıt sırasında bir hata oluştu.";
     return NextResponse.json(
-      { error: "Kayıt sırasında bir hata oluştu." },
+      { error: message },
       { status: 500 }
     );
   }
