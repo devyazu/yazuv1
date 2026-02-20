@@ -21,7 +21,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-white mb-6">Admin Dashboard</h1>
+      <h1 className="text-2xl font-semibold text-foreground mb-6">Admin Dashboard</h1>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {cards.map((c) => (
           <Link
@@ -29,8 +29,8 @@ export default async function AdminDashboardPage() {
             href={c.href}
             className="rounded-xl border border-[var(--border)] bg-surface-card p-6 hover:border-primary/50 transition"
           >
-            <p className="text-zinc-400 text-sm">{c.label}</p>
-            <p className="text-2xl font-semibold text-white mt-1">{c.value}</p>
+            <p className="text-muted text-sm">{c.label}</p>
+            <p className="text-2xl font-semibold text-foreground mt-1">{c.value}</p>
           </Link>
         ))}
       </div>

@@ -37,8 +37,8 @@ export default async function ToolPage({
         <span className="text-xs font-medium text-primary uppercase tracking-wider">
           {tool.category.name}
         </span>
-        <h1 className="text-2xl font-semibold text-white mt-1">{tool.name}</h1>
-        <p className="mt-2 text-zinc-400">{tool.description}</p>
+        <h1 className="text-2xl font-semibold text-foreground mt-1">{tool.name}</h1>
+        <p className="mt-2 text-muted">{tool.description}</p>
       </div>
       {hasAccess ? (
         <ToolRunner
@@ -49,7 +49,7 @@ export default async function ToolPage({
           brands={brands}
         />
       ) : (
-        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-6 text-amber-200">
+        <div className="rounded-xl border border-amber-400 bg-amber-50 p-6 text-amber-800">
           Bu araç mevcut planınızda yer almıyor. Planınızı yükseltmek için{" "}
           <a href="/profile" className="underline">
             Profil & Fatura

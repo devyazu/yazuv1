@@ -27,7 +27,7 @@ export default async function AdminMainLayout({
     <div className="min-h-screen bg-surface flex">
       <aside className="w-56 border-r border-[var(--border)] bg-surface-elevated flex flex-col">
         <div className="p-4 border-b border-[var(--border)]">
-          <Link href="/admin" className="font-semibold text-white">
+          <Link href="/admin" className="font-semibold text-foreground">
             Yazu Admin
           </Link>
         </div>
@@ -36,7 +36,7 @@ export default async function AdminMainLayout({
             <Link
               key={item.href}
               href={item.href}
-              className="block rounded-lg px-3 py-2 text-sm text-zinc-400 hover:bg-white/5 hover:text-white transition"
+              className="block rounded-lg px-3 py-2 text-sm text-muted hover:bg-black/5 hover:text-foreground transition"
             >
               {item.label}
             </Link>
@@ -45,7 +45,7 @@ export default async function AdminMainLayout({
         <div className="p-3 border-t border-[var(--border)]">
           <Link
             href="/dashboard"
-            className="block rounded-lg px-3 py-2 text-sm text-zinc-400 hover:text-white transition"
+            className="block rounded-lg px-3 py-2 text-sm text-muted hover:text-foreground transition"
           >
             ← Ön yüze dön
           </Link>

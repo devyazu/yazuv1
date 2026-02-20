@@ -24,7 +24,7 @@ export function UserRoleSelect({
     <select
       value={currentRole}
       onChange={(e) => changeRole(e.target.value as "user" | "admin")}
-      className="rounded-lg bg-surface border border-[var(--border)] px-3 py-1.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary"
+      className="rounded-lg bg-surface border border-[var(--border)] px-3 py-1.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
     >
       <option value="user">user</option>
       <option value="admin">admin</option>

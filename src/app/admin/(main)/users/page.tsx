@@ -10,10 +10,10 @@ export default async function AdminUsersPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-white mb-6">Kullanıcılar</h1>
+      <h1 className="text-2xl font-semibold text-foreground mb-6">Kullanıcılar</h1>
       <div className="rounded-xl border border-[var(--border)] overflow-hidden">
         <table className="w-full text-left">
-          <thead className="bg-surface-elevated text-zinc-400 text-sm">
+          <thead className="bg-surface-elevated text-muted text-sm">
             <tr>
               <th className="px-4 py-3 font-medium">E-posta</th>
               <th className="px-4 py-3 font-medium">Ad</th>
@@ -24,14 +24,14 @@ export default async function AdminUsersPage() {
           </thead>
           <tbody className="divide-y divide-[var(--border)]">
             {users.map((u) => (
-              <tr key={u.id} className="text-white">
+              <tr key={u.id} className="text-foreground">
                 <td className="px-4 py-3">{u.email}</td>
                 <td className="px-4 py-3">{u.name ?? "—"}</td>
                 <td className="px-4 py-3">{u.plan?.name ?? "—"}</td>
                 <td className="px-4 py-3">
                   <UserRoleSelect userId={u.id} currentRole={u.role} />
                 </td>
-                <td className="px-4 py-3 text-zinc-400 text-sm">
+                <td className="px-4 py-3 text-muted text-sm">
                   {new Date(u.createdAt).toLocaleDateString("tr-TR")}
                 </td>
               </tr>

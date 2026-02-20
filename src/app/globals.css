@@ -3,19 +3,42 @@
 @tailwind utilities;
 
 :root {
-  --primary: #ff6100;
+  --primary: #e85d04;
+  --primary-hover: #d45203;
   --primary-foreground: #fff;
-  --surface: #0f0f0f;
-  --surface-elevated: #1a1a1a;
-  --surface-card: #161616;
-  --border: #2a2a2a;
+  --background: #fafafa;
+  --surface: #fafafa;
+  --surface-elevated: #ffffff;
+  --surface-card: #ffffff;
+  --border: #e5e5e5;
+  --foreground: #171717;
   --muted: #737373;
 }
 
 body {
   background: var(--surface);
-  color: #e5e5e5;
+  color: var(--foreground);
   font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.text-foreground {
+  color: var(--foreground);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.text-primary-foreground {
+  color: var(--primary-foreground);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-primary:hover {
+  background-color: var(--primary-hover);
 }
 
 @layer utilities {
@@ -24,7 +47,6 @@ body {
   }
 }
 
-/* Elite modern scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -33,9 +55,9 @@ body {
   background: var(--surface-elevated);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--border);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: var(--muted);
 }

@@ -55,13 +55,13 @@ export function ToolRunner({
       <form onSubmit={handleSubmit} className="space-y-4">
         {brands.length > 0 && (
           <div>
-            <label className="block text-sm font-medium text-zinc-400 mb-1">
+            <label className="block text-sm font-medium text-muted mb-1">
               Marka (isteğe bağlı)
             </label>
             <select
               value={brandId}
               onChange={(e) => setBrandId(e.target.value)}
-              className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">Marka seçmeyin</option>
               {brands.map((b) => (
@@ -73,7 +73,7 @@ export function ToolRunner({
           </div>
         )}
         <div>
-          <label className="block text-sm font-medium text-zinc-400 mb-1">
+          <label className="block text-sm font-medium text-muted mb-1">
             {inputLabel}
           </label>
           <textarea
@@ -82,28 +82,28 @@ export function ToolRunner({
             required
             rows={4}
             placeholder={inputPlaceholder}
-            className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+            className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-3 text-foreground placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="rounded-lg bg-primary px-6 py-3 font-medium text-white hover:bg-primary-600 disabled:opacity-50 transition"
+          className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50 transition"
         >
           {loading ? "Üretiliyor..." : `${toolName} üret`}
         </button>
       </form>
 
       {error && (
-        <div className="rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 p-4 text-sm">
+        <div className="rounded-lg bg-red-50 border border-red-200 text-red-600 p-4 text-sm">
           {error}
         </div>
       )}
 
       {result && (
         <div className="rounded-xl border border-[var(--border)] bg-surface-card p-6">
-          <h3 className="text-sm font-medium text-zinc-400 mb-2">Çıktı</h3>
-          <div className="text-white whitespace-pre-wrap font-sans">{result}</div>
+          <h3 className="text-sm font-medium text-muted mb-2">Çıktı</h3>
+          <div className="text-foreground whitespace-pre-wrap font-sans">{result}</div>
         </div>
       )}
     </div>

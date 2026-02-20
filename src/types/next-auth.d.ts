@@ -6,6 +6,7 @@ declare module "next-auth" {
     role?: string;
     planId?: string;
     planSlug?: string;
+    emailVerified?: boolean;
   }
 
   interface Session {
@@ -14,6 +15,7 @@ declare module "next-auth" {
       role?: string;
       planId?: string;
       planSlug?: string;
+      emailVerified?: boolean;
     };
   }
 }
@@ -24,5 +26,6 @@ declare module "next-auth/jwt" {
     role?: string;
     planId?: string;
     planSlug?: string;
+    emailVerified?: boolean;
   }
 }

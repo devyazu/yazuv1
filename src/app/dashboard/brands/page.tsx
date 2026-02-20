@@ -24,8 +24,8 @@ export default async function BrandsPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-white mb-2">Markalarım</h1>
-      <p className="text-zinc-400 mb-6">
+      <h1 className="text-2xl font-semibold text-foreground mb-2">Markalarım</h1>
+      <p className="text-muted mb-6">
         Planınız: {brands.length} / {brandsLimit} marka. Marka ekleyerek araç çıktılarında
         marka verilerinizi kullanabilirsiniz.
       </p>

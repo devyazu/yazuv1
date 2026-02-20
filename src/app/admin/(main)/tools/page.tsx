@@ -15,10 +15,10 @@ export default async function AdminToolsPage({
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-white mb-6">Araçlar</h1>
+      <h1 className="text-2xl font-semibold text-foreground mb-6">Araçlar</h1>
       <div className="rounded-xl border border-[var(--border)] overflow-hidden">
         <table className="w-full text-left">
-          <thead className="bg-surface-elevated text-zinc-400 text-sm">
+          <thead className="bg-surface-elevated text-muted text-sm">
             <tr>
               <th className="px-4 py-3 font-medium">Kategori</th>
               <th className="px-4 py-3 font-medium">Araç</th>
@@ -28,17 +28,17 @@ export default async function AdminToolsPage({
           </thead>
           <tbody className="divide-y divide-[var(--border)]">
             {tools.map((t) => (
-              <tr key={t.id} className="text-white">
+              <tr key={t.id} className="text-foreground">
                 <td className="px-4 py-3">{t.category.name}</td>
                 <td className="px-4 py-3 font-medium">{t.name}</td>
-                <td className="px-4 py-3 text-zinc-300">{t.tier}</td>
+                <td className="px-4 py-3 text-muted">{t.tier}</td>
                 <td className="px-4 py-3">{t.active ? "Evet" : "Hayır"}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p className="mt-4 text-sm text-zinc-500">
+      <p className="mt-4 text-sm text-muted">
         Araç prompt'larını ve tier'ını veritabanında (Tool.systemPrompt, Tool.tier) veya Prisma
         Studio ile düzenleyebilirsiniz. İleride admin'e prompt editörü eklenebilir.
       </p>

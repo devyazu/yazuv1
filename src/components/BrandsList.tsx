@@ -65,28 +65,28 @@ export function BrandsList({
                 onChange={(e) => setName(e.target.value)}
                 required
                 placeholder="Marka adı"
-                className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-2 text-foreground placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Kısa açıklama (isteğe bağlı)"
                 rows={2}
-                className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                className="w-full rounded-lg bg-surface border border-[var(--border)] px-4 py-2 text-foreground placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
               />
-              {error && <p className="text-sm text-red-400">{error}</p>}
+              {error && <p className="text-sm text-red-500">{error}</p>}
               <div className="flex gap-2">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-600 disabled:opacity-50"
+                  className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50"
                 >
                   {loading ? "Ekleniyor..." : "Ekle"}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm text-zinc-400 hover:text-white"
+                  className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm text-muted hover:text-foreground"
                 >
                   İptal
                 </button>
@@ -102,15 +102,15 @@ export function BrandsList({
             className="rounded-xl border border-[var(--border)] bg-surface-card p-4 flex items-center justify-between"
           >
             <div>
-              <p className="font-medium text-white">{b.name}</p>
+              <p className="font-medium text-foreground">{b.name}</p>
               {b.description && (
-                <p className="text-sm text-zinc-400 mt-0.5">{b.description}</p>
+                <p className="text-sm text-muted mt-0.5">{b.description}</p>
               )}
             </div>
             <button
               type="button"
               onClick={() => handleDelete(b.id)}
-              className="text-sm text-red-400 hover:text-red-300"
+              className="text-sm text-red-500 hover:text-red-600"
             >
               Sil
             </button>
@@ -118,7 +118,7 @@ export function BrandsList({
         ))}
       </ul>
       {list.length === 0 && !showForm && (
-        <p className="text-zinc-500">Henüz marka eklenmedi.</p>
+        <p className="text-muted">Henüz marka eklenmedi.</p>
       )}
     </div>
   );

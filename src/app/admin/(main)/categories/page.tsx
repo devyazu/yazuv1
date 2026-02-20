@@ -9,7 +9,7 @@ export default async function AdminCategoriesPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-white mb-6">Kategoriler</h1>
+      <h1 className="text-2xl font-semibold text-foreground mb-6">Kategoriler</h1>
       <div className="space-y-4">
         {categories.map((c) => (
           <div
@@ -17,8 +17,8 @@ export default async function AdminCategoriesPage() {
             className="rounded-xl border border-[var(--border)] bg-surface-card p-4 flex items-center justify-between"
           >
             <div>
-              <p className="font-medium text-white">{c.name}</p>
-              <p className="text-sm text-zinc-400">/{c.slug} — {c._count.tools} araç</p>
+              <p className="font-medium text-foreground">{c.name}</p>
+              <p className="text-sm text-muted">/{c.slug} — {c._count.tools} araç</p>
             </div>
             <Link
               href={`/admin/tools?category=${c.id}`}

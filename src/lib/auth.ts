@@ -40,6 +40,7 @@ export const authOptions: NextAuthOptions = {
           role: user.role,
           planId: user.planId ?? undefined,
           planSlug: user.plan?.slug,
+          emailVerified: user.emailVerified ? true : undefined,
         };
       },
     }),
@@ -51,6 +52,7 @@ export const authOptions: NextAuthOptions = {
         token.role = (user as { role?: string }).role;
         token.planId = (user as { planId?: string }).planId;
         token.planSlug = (user as { planSlug?: string }).planSlug;
+        token.emailVerified = (user as { emailVerified?: boolean }).emailVerified;
       }
       return token;
     },
@@ -60,6 +62,7 @@ export const authOptions: NextAuthOptions = {
         (session.user as { role?: string }).role = token.role as string;
         (session.user as { planId?: string }).planId = token.planId as string | undefined;
         (session.user as { planSlug?: string }).planSlug = token.planSlug as string | undefined;
+        (session.user as { emailVerified?: boolean }).emailVerified = token.emailVerified as boolean | undefined;
       }
       return session;
     },
